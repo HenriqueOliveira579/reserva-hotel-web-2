@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+<body>
+
+<header class="jumbotron jumbotron-fluid bg-primary">
+
+    <div class="container text-white">
+        <h1>Reserva Hotel</h1>
+    </div>
+
+</header>
+<main class="container">
+    <form action="Controller/ReservaController.php" method="post">
+
+        <div class="form-group">
+
+            <label for="nome">Nome</label>
+            <input class="form-control" id="nome" type="text" name="nome" autocomplete="off" required>
+
+            <label for="email">E-mail:</label>
+            <input class="form-control" id="email" type="email" name="email" autocomplete="off" required>
+
+            <label for="telefone">Telefone:</label>
+            <input pattern="^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$" class="form-control" id="telefone" type="tel" name="telefone" autocomplete="off" required>
+
+            <label for="rg">RG:</label>
+            <input class="form-control" id="rg" type="text" name="rg" autocomplete="off">
+
+            <label for="quantidade-diarias">Quantidade de Diárias:</label>
+            <input class="form-control" id="quantidade-diarias" type="number" name="quantidade-diarias" autocomplete="off" required>
+
+            <label for="tipo-acomodacao">Tipo de Acomodação</label>
+            <select class="form-control" name="tipo-acomodacao" required>
+                <option disabled selected>Selecione o tipo de acomodação</option>
+                <option value="Suite Double Master">Suite Double Master - R$150 a diária</option>
+                <option value="Suite Familia">Suite Familia - R$180 a diária</option>
+                <option value="Suite Single">Suite Single - R$100 a diária</option>
+            </select>
+
+        </div>
+  </div>
+
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Reservar">
+        <input type="reset" value="Limpar" class="btn btn-warning">
+    </div>
+
+    </form>
+</main>
+<footer>
+
+</footer>
+
+    
+</body>
+</html>
