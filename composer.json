@@ -1,0 +1,16 @@
+{
+    "name": "henriqueoliveira/reserva-hotel",
+    "description": "Atividade feita para a disciplina Web II",
+    "autoload": {
+        "psr-4": {
+            "Henriqueoliveira\\ReservaHotel\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Henrique Oliveira",
+            "email": "henriquemaliaoliveira@gmail.com"
+        }
+    ],
+    "require": {}
+}
