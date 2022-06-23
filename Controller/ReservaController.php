@@ -2,6 +2,7 @@
 
     require "../Model/Cliente.php";
     require "../Model/Reserva.php";
+    require "../Utils/Utils.php";
 
     class ReservaController {
         private $camposObrigatorios = ["nome", "email", "telefone", "rg", "id-quarto", "quantidade-diarias"];
@@ -12,14 +13,16 @@
 
             if (!$this->verificarCampos($this->camposObrigatorios)) {
 
-                $erro = "Faltando campos no formulário";
-                $_SESSION["erro"] = $erro;
-                header("Location: ../View/erro.php" );
-                die;
+                $this->erro("Faltando Campos no Formulário");
             }
 
             $cliente = new Cliente($_POST["nome"], $_POST["email"], $_POST["telefone"], $_POST["rg"]);
-            $quarto = Quarto::getById((int)$_POST["id-quarto"]);
+            $quarto = Quarto::getById($_POST["id-quarto"]);
+
+            if (!$quarto) {
+                $this->erro("Quarto não encontrado");
+            }
+
             $reserva = new Reserva($cliente, $quarto, $_POST["quantidade-diarias"]);
 
             $_SESSION["reserva"] = serialize($reserva);
@@ -31,14 +34,14 @@
         private function verificarCampos($campos) {
             foreach ($campos as $campo) {
                 if (empty($_POST[$campo])) {
-                    echo "ERROOO";
-                    echo $campo;
                     return false;
                 }
             }
 
             return true;
         }
+
+        
     
     }
 

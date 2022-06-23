@@ -4,7 +4,11 @@ session_start();
 
 require "../Model/Reserva.php";
 require "../Model/Cliente.php";
+require "../Utils/Utils.php";
 
+if (empty($_SESSION["reserva"])) {
+    Utils::erro("Não foi possivel encontrar sua reserva.");
+}
 
 $reserva = unserialize($_SESSION["reserva"]);
 $cliente = $reserva->getCliente();
