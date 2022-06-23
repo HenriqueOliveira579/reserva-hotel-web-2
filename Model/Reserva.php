@@ -3,30 +3,22 @@
     class Reserva {
 
         private $cliente;
-        private $tipoAcomodacao;
+        private $idAcomodacao;
         private $quantidadeDiarias;
 
-        function __construct($cliente, $tipoAcomodacao, $quantidadeDiarias)
+        function __construct($cliente, $idAcomodacao, $quantidadeDiarias)
         {
             $this->cliente = $cliente;
-            $this->tipoAcomodacao = $tipoAcomodacao;
+            $this->idAcomodacao = $idAcomodacao;
             $this->quantidadeDiarias = $quantidadeDiarias;
         }
 
         public function getPrecoAcomodacao() {
-            switch ($this->tipoAcomodacao) {
-                case "Suite Double Master":
-                    return 150;
-                    break;
+            return Acomodacao::getById($this->idAcomodacao)->getPrecoDiaria();
+        }
 
-                case "Suite Familia":
-                    return 180;
-                    break;
-
-                case "Suite Single":
-                    return 100;
-                    break;
-            }
+        public function getNomeAcomodacao() {
+            return Acomodacao::getById($this->idAcomodacao)->getNome();
         }
 
         public function getPrecoTotal() {
