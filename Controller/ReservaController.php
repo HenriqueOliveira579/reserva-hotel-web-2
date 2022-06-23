@@ -40,9 +40,6 @@
 
             return true;
         }
-
-        
-    
     }
 
     $controller = new ReservaController();
