@@ -4,7 +4,7 @@
     require "../Model/Reserva.php";
 
     class ReservaController {
-        private $camposObrigatorios = ["nome", "email", "telefone", "rg", "tipo-acomodacao", "quantidade-diarias"];
+        private $camposObrigatorios = ["nome", "email", "telefone", "rg", "id-quarto", "quantidade-diarias"];
         
         public function main() {
 
@@ -19,7 +19,8 @@
             }
 
             $cliente = new Cliente($_POST["nome"], $_POST["email"], $_POST["telefone"], $_POST["rg"]);
-            $reserva = new Reserva($cliente, $_POST["tipo-acomodacao"], $_POST["quantidade-diarias"]);
+            $quarto = Quarto::getById((int)$_POST["id-quarto"]);
+            $reserva = new Reserva($cliente, $quarto, $_POST["quantidade-diarias"]);
 
             $_SESSION["reserva"] = serialize($reserva);
 

@@ -5,8 +5,10 @@ session_start();
 require "../Model/Reserva.php";
 require "../Model/Cliente.php";
 
+
 $reserva = unserialize($_SESSION["reserva"]);
 $cliente = $reserva->getCliente();
+$quarto = $reserva->getQuarto();
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +50,7 @@ $cliente = $reserva->getCliente();
         <hr>
 
         <p>Quantidade de diárias: <?php echo $reserva->getQuantidadeDiarias() ?></p>
-        <p>Tipo de Acomodação <?php echo $reserva->getTipoAcomodacao() ?></p>
+        <p>Tipo de Acomodação: <?php echo $quarto->getNome() ?></p>
 
         <hr>
 
